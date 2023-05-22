@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="otus.study.cashmachine.machine.service.MoneyBoxServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-05-22T16:22:12" hostname="DESKTOP-798OPVM" time="0.061">
+  <properties/>
+  <testcase name="chargeMoreThanHave()" classname="otus.study.cashmachine.machine.service.MoneyBoxServiceTest" time="0.054"/>
+  <testcase name="addNotes()" classname="otus.study.cashmachine.machine.service.MoneyBoxServiceTest" time="0.001"/>
+  <testcase name="charge1001()" classname="otus.study.cashmachine.machine.service.MoneyBoxServiceTest" time="0.002"/>
+  <testcase name="charge7800()" classname="otus.study.cashmachine.machine.service.MoneyBoxServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
