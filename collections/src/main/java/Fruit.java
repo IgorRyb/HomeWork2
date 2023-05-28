@@ -1,18 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Fruit {
-    List<Integer> fruit = new ArrayList<>();
 
-    public List<Integer> addFruit(int n) {
-        return fruit;
+    private double weight = 0;
+
+    public double getWeight() {
+        return weight;
     }
 
-    public List<Integer> getFruit() {
-        return fruit;
-    }
-
-    public void setFruit(List<Integer> fruit) {
-        this.fruit = fruit;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 }

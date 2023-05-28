@@ -1,41 +1,41 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Box <T extends Fruit> {
 
-    private ArrayList<T> box = new ArrayList<>();
+    private List<T> box = new ArrayList<>();
 
-    public ArrayList<T> getBox() {
+    private T fruit;
+
+    public List<T> getBox() {
         return box;
     }
 
-    public void setBox(ArrayList<T> box) {
+    public void setBox(List<T> box) {
         this.box = box;
     }
 
     public double weight() {
-        double weightOfOneFruit = 4.5;
-        return box.size() * weightOfOneFruit;
+        double n = 0;
+        for (int i = 0; i < box.size(); i++) {
+            n += box.get(i).getWeight();
+        }
+        return n;
     }
 
     public boolean compare(Box<?> newFruit) {
         return Math.abs(this.weight() - newFruit.weight()) < 0.001f;
     }
 
-    public Box<T> fruitRedistribution(Box<T> newBox) {
-        if (box != null) {
+    public void fruitRedistribution(Box<T> newBox) {
+        if ((newBox != null) && (box != newBox)) {
             newBox.getBox().addAll(box);
             box.clear();
         }
-        return newBox;
     }
 
-    public List<T> addFruit(int n, T fruit) {
-        for (int i = 0; i < n; i++) {
-            box.add(fruit);
-        }
+    public List<T> addFruit(T fruit) {
+        box.add(fruit);
         return box;
     }
 }

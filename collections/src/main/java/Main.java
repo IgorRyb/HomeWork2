@@ -1,20 +1,21 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
         Box<Apple> firstAppleBox = new Box<>();
-        firstAppleBox.addFruit(5, new Apple());
+        for (int i = 0; i < 4; i++) {
+            firstAppleBox.addFruit(new Apple());
+        }
         Box<Orange> orangeBox = new Box<>();
-        orangeBox.addFruit(4, new Orange());
+        for (int i = 0; i < 2; i++) {
+            orangeBox.addFruit(new Orange());
+        }
         System.out.println(firstAppleBox.weight());
         System.out.println(firstAppleBox.compare(orangeBox));
         Box<Apple> secondAppleBox = new Box<>();
-        secondAppleBox.addFruit(6, new Apple());
-        System.out.println(firstAppleBox.fruitRedistribution(secondAppleBox).getBox().size());
-        System.out.println(firstAppleBox.getBox().size());
+        for (int i = 0; i < 6; i++) {
+            secondAppleBox.addFruit(new Apple());
+        }
+        firstAppleBox.fruitRedistribution(secondAppleBox);
+        System.out.println(secondAppleBox.getBox().size());
     }
 }
