@@ -5,8 +5,6 @@ public class Box <T extends Fruit> {
 
     private List<T> box = new ArrayList<>();
 
-    private T fruit;
-
     public List<T> getBox() {
         return box;
     }
@@ -28,7 +26,7 @@ public class Box <T extends Fruit> {
     }
 
     public void fruitRedistribution(Box<T> newBox) {
-        if ((newBox != null) && (box != newBox)) {
+        if ((newBox != null) && (this != newBox)) {
             newBox.getBox().addAll(box);
             box.clear();
         }
