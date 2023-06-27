@@ -1,0 +1,14 @@
+	Вывод		|	Стартовый размер хипа	|	Максимальный размер хипа	|	Какой garbage collection
+spend msec:14487, sec:14|		256m		|		256m			|		G1
+spend msec:13990, sec:13|		2048m		|		2048m			|		G1
+spend msec:13823, sec:13|		512m		|		512m			|		G1
+spend msec:12900, sec:12|		32768m		|		32768m			|		G1	- Оптимальный размер хипа для G1
+spend msec:14999, sec:14|		16384m		|		16384m			|		G1
+	-------		|		65536m		|		65536m			|		G1	- Предел
+spend msec:8226, sec:8	|		256m		|		256m			|		ZGC	
+spend msec:9285, sec:9	|		512m		|		512m			|		ZGC
+spend msec:8495, sec:8	|		2048m		|		2048m			|		ZGC
+spend msec:8239, sec:8	|		16384m		|		16384m			|		ZGC
+spend msec:7996, sec:7	|		32768m		|		32768m			|		ZGC	- Оптимальный размер для ZGC
+После изменения полей в классе Summator с ссылочных типов (Integer) на примитивный тип (int)
+spend msec:3525, sec:3	|		32768m		|		32768m			|		G1	
