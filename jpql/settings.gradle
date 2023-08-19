@@ -1,0 +1,4 @@
+rootProject.name = 'jpql'
+include 'class-demo'
+include 'class-demo'
+include 'homework-template'
