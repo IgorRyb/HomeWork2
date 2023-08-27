@@ -8,6 +8,10 @@ create table client
 );
 
  */
+drop table if exists client;
+drop table if exists address;
+drop table if exists phone;
+drop sequence if exists  hibernate_sequence;
 
 -- Для @GeneratedValue(strategy = GenerationType.SEQUENCE)
 create sequence hibernate_sequence start with 1 increment by 1;
