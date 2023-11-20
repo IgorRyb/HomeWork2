@@ -13,12 +13,7 @@ public class HWCacheDemo {
     private void demo() {
         HwCache<String, Integer> cache = new MyCache<>();
 
-        HwListener<String, Integer> listener = new HwListener<String, Integer>() {
-            @Override
-            public void notify(String key, Integer value, String action) {
-                logger.info("key:{}, value:{}, action: {}", key, value, action);
-            }
-        };
+        HwListener<String, Integer> listener = (key, value, action) -> logger.info("key:{}, value:{}, action: {}", key, value, action);
 
         cache.addListener(listener);
         cache.put("1", 1);
