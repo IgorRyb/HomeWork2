@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank</title>
+</head>
+<body>
+
+<h1>Bank</h1>
+
+<h3>Number: <span th:text="${number}"></span></h3>
+<h3>Pin Code: <span th:text="${pinCode}"></span></h3>
+
+<form action="index" method="post">
+    <fieldset>
+        <label for="number">Ввести номер карты:</label>
+        <input type="text"   id="number" name="number">
+        <br>
+        <button type="submit">Ввести</button>
+    </fieldset>
+</form>
+<br>
+
+
+<form action="index" method="get">
+    <fieldset>
+        <label for="takeMoney">Снять деньги:</label>
+        <input type="text" id="takeMoney" name="takeOff">
+        <input type="submit" value="Withdraw money">
+    </fieldset>
+</form>
+<br>
+
+<form action="index" method="get">
+    <fieldset>
+        <label for="depositMoney">Положить деньги:</label>
+        <input type="text" id="depositMoney" name="amount">
+        <input type="submit" value="Deposit money">
+    </fieldset>
+</form>
+
+<br>
+<form action="/index" method="get">
+    <fieldset>
+        <label for="checkBalance">Проверить баланс:</label>
+        <p id="checkBalance"></p>
+        <input type="button" value="Check money" onclick="check();">
+    </fieldset>
+</form>
+<br>
+<form action="/index" method="get">
+    <fieldset>
+        <label for="changePin">Новый пин-код:</label>
+        <input type="text" id="changePin" name="changePin">
+        <input type="submit" value="Change pin">
+    </fieldset>
+</form>
+
+<script th:inline="javascript">
+    const p = document.querySelector("#checkBalance");
+    function check() {
+            p.textContent = [[${takeMoney}]];
+    };
+</script>
+</body>
+</html>
