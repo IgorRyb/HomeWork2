@@ -1,5 +1,14 @@
 package org.example.data;
 
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
+@Component
+@Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
 public class Card {
     long id;
 

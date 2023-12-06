@@ -4,7 +4,9 @@ package org.example.db;
 
 import org.example.data.Account;
 import org.example.data.Card;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,4 +31,5 @@ public class Cards {
         idSequence ++;
         return idSequence;
     }
+
 }
