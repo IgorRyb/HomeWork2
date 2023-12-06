@@ -59,11 +59,16 @@ public class BankDataController {
     @PostMapping
     public String enteringCardData(Model model, @RequestParam(name = "number") String number
                                        , @RequestParam(name = "pinCode") String pinCode) {
-        Account account = accountService.createAccount(BigDecimal.ZERO);
-        card = cardsDao.createCard(number, account.getId(), pinCode);
-        System.out.println("1 раз: " + card.getPinCode());
-        model.addAttribute("number", number);
-        model.addAttribute("pinCode", pinCode);
+        if (cardsDao.getCardByNumber(number) == null) {
+            Account account = accountService.createAccount(BigDecimal.ZERO);
+            card = cardsDao.createCard(number, account.getId(), pinCode);
+            model.addAttribute("number", number);
+            model.addAttribute("pinCode", pinCode);
+        } else {
+            card = cardsDao.getCardByNumber(number);
+            model.addAttribute("number", card.getNumber());
+            model.addAttribute("pinCode", card.getPinCode());
+        }
         return "index";
     }
 
