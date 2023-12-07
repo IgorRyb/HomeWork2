@@ -6,6 +6,7 @@ import org.example.dao.CardsDao;
 import org.example.data.Account;
 import org.example.data.Card;
 import org.example.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class BankDataController {
 
     private final CardsDao cardsDao;
 
+    @Autowired
     private Card card;
 
     @GetMapping("/index")
@@ -49,7 +51,6 @@ public class BankDataController {
 
     @GetMapping(params = "changePin")
     public String changePin(Model model, @RequestParam(name = "changePin", required = false) String changePin) {
-
         card.setPinCode(changePin);
         model.addAttribute("pinCode", changePin);
         model.addAttribute("number", card.getNumber());

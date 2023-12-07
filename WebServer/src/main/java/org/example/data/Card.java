@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 @Component
-@Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Card {
     long id;
 
