@@ -7,6 +7,7 @@ import ru.igorryb.spring.data.jdbc.demo.dtos.DetailedBookDto;
 import ru.igorryb.spring.data.jdbc.demo.dtos.PageDto;
 import ru.igorryb.spring.data.jdbc.demo.dtos.ReviewGradeDto;
 import ru.igorryb.spring.data.jdbc.demo.dtos.TopReviewDto;
+import ru.igorryb.spring.data.jdbc.demo.exceptions.ResourceNotFoundException;
 import ru.igorryb.spring.data.jdbc.demo.repositories.BooksRepository;
 
 import java.util.ArrayList;

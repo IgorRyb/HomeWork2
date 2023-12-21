@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.igorryb.spring.data.jdbc.demo.dtos.ReviewDto;
 import ru.igorryb.spring.data.jdbc.demo.entities.Review;
 import ru.igorryb.spring.data.jdbc.demo.services.ReviewsService;
+import ru.igorryb.spring.data.jdbc.demo.dtos.SimplestPageDto;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;

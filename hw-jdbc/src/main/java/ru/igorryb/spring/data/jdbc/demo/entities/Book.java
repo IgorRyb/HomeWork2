@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
+import ru.igorryb.spring.data.jdbc.demo.dtos.Genre;
 
 @Table("BOOKS")
 public class Book {
