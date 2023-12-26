@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Students</title>
+</head>
+<body>
+<table border="1">
+<tr th:each="student: ${student}" cellpadding="5" cellspacing="5">
+    <td th:text="${student.id}" />
+    <td th:text="${student.name}" />
+    <td th:text="${student.age}" />
+</tr>
+</table>
+<form method="post">
+    <p> Имя
+        <input name="name" type="text" size="30" />
+    </p>
+    <p> Возраст
+        <input name="age" type="text" size="20" />
+    </p>
+    <input type="submit" value="Добавить студента"/>
+<form>
+
+</body>
+</html>
