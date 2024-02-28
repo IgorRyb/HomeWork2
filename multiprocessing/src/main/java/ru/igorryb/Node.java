@@ -4,19 +4,18 @@ package ru.igorryb;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class Node {
 
     private static int port;
     private static String host;
-    private static final int RESPONSE_PORT = 8989;
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int registeredPort = sendSignal();
+        int responsePort = Integer.parseInt(getPropertyFromResource().getProperty("port.response"));
+        int registeredPort = sendSignal(responsePort);
         handle(registeredPort);
     }
 
@@ -25,9 +24,9 @@ public class Node {
         this.host = host;
     }
 
-    private static int sendSignal() {
+    private static int sendSignal(int portForSocket) {
         int port = scanner.nextInt();
-        try (Socket socket = new Socket("localhost", RESPONSE_PORT);
+        try (Socket socket = new Socket("localhost", portForSocket);
                  BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true)) {
             printWriter.println(port);
@@ -52,6 +51,17 @@ public class Node {
             } catch (IOException e) {
 
             }
+        }
+    }
+
+    private static Properties getPropertyFromResource() {
+        try {
+            FileInputStream is = new FileInputStream("src/main/resources/application.properties");
+            Properties properties = new Properties();
+            properties.load(is);
+            return properties;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

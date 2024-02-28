@@ -3,30 +3,26 @@ package ru.igorryb;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class LoadBalancer {
 
     private static List<Node> nodes = Collections.synchronizedList(new ArrayList<>());
 
-    private static final int LISTENING_PORT = 8989;
-    private static final int REQUESTING_PORT = 9091;
-
     public static void main(String[] args) {
-        nodeListener();
-        responseProcess();
+        int listeningPort = Integer.parseInt(getPropertyFromResource().getProperty("port.response"));
+        int requestingPort = Integer.parseInt(getPropertyFromResource().getProperty("port.request"));
+        nodeListener(listeningPort);
+        responseProcess(requestingPort);
     }
 
-    public static void nodeListener() {
+    public static void nodeListener(int port) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
                     sleep();
-                    try (ServerSocket serverSocket = new ServerSocket(LISTENING_PORT)) {
+                    try (ServerSocket serverSocket = new ServerSocket(port)) {
                         Socket socket = serverSocket.accept();
                         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                              PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true)) {
@@ -40,12 +36,12 @@ public class LoadBalancer {
         }).start();
     }
 
-    public static void responseProcess() {
+    public static void responseProcess(int port) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
-                    try (ServerSocket serverSocket = new ServerSocket(REQUESTING_PORT)) {
+                    try (ServerSocket serverSocket = new ServerSocket(port)) {
                         Socket socket = serverSocket.accept();
                         try (PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
                              BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
@@ -90,6 +86,17 @@ public class LoadBalancer {
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static Properties getPropertyFromResource() {
+        try {
+            FileInputStream is = new FileInputStream("src/main/resources/application.properties");
+            Properties properties = new Properties();
+            properties.load(is);
+            return properties;
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
