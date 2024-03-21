@@ -1,0 +1,4 @@
+rootProject.name = 'webflux-project'
+include 'reactive-service'
+include 'slow-service'
+
